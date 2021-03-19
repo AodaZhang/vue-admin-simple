@@ -1,0 +1,50 @@
+@import '~@/style/define.less';
+
+.base-layout {
+  width: 100%;
+  height: 100%;
+
+  .ant-layout-sider {
+    overflow: auto;
+    height: 100%;
+  }
+
+  .ant-layout-header {
+    .boxShadow(outside, rgba(0, 21, 41, 0.08), 0, 1px, 4px);
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    background-color: @--color-white;
+  }
+
+  .ant-layout-content {
+    position: relative;
+    z-index: 0;
+    min-height: auto;
+  }
+
+  .ant-layout-footer {
+    padding: 15px 30px;
+    text-align: center;
+  }
+
+  &__trigger {
+    .fontSize(18px);
+    float: left;
+    padding: 23px;
+  }
+
+  &__user {
+    float: right;
+    padding: 0 10px;
+  }
+
+  &__lang {
+    float: right;
+    padding: 23px;
+  }
+
+  &__main {
+    padding: 24px 24px 0;
+  }
+}

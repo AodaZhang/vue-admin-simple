@@ -1,0 +1,49 @@
+{
+  /* @extends https://www.staging-typescript.org/zh/tsconfig */
+
+  // 一.ts编译文件夹
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+  // 二.ts编译忽略文件夹
+  "exclude": ["node_modules"],
+  // 三.ts编译选项
+  "compilerOptions": {
+    /* 1.基础配置 */
+    "target": "ESNext", // 编译js的ECMAScript版本：'ES3'（默认）、'ES5', 'ES2015'、'ES2016'、'ES2017'、'ES2018'、'ES2019'、'ES2020'、'ESNEXT'
+    "module": "ESNext", // 编译js的模块化语法方案：'None'、'CommonJS'、'AMD'、'System'、'UMD'、'ES6'、'ES2015'、'ES2020'、'ESNext'
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "scripthost"], // 编译js library支持环境：'ES5'、'ES6'、'ES7'、'ES2015'、'ES2016'、'ES2017'、'ESNext'、'DOM'
+    "sourceMap": true, // 是否生成编译的source map
+    "moduleResolution": "Node", // 采用node方式解析import
+    "jsx": "preserve", // 控制jsx编译为js文件中的方式（只对.tsx文件有效）：'preserve' 不对jsx进行改变并生成.jsx文件
+    "importHelpers": true, // 是否从tslib中导入辅助函数
+    "allowSyntheticDefaultImports": true, // 是否允许合成import
+    "typeRoots": ["node_modules/@types", "src/types"], // 项目中全局.d.ts文件定义位置
+
+    /* 2.严格类型检查 */
+    "strict": true, // 是否开启js严格模式
+    "noImplicitAny": true, // 是否必须显式设置any
+    "strictNullChecks": false, // 是否允许非null类型变量赋值为null
+
+    /* 3.附加类型检查 */
+    "noUnusedLocals": true, // 是否检查未使用的局部变量
+    "noUnusedParameters": true, // 是否检查未使用的函数参数
+
+    /* 4.模块引用检查 */
+    "esModuleInterop": true,
+    "baseUrl": ".", // 当前项目根路径
+    "paths": {
+      "@/*": ["src/*"]
+    }, // 当前配置路径别名
+
+    /* 5.命名空间配置 */
+
+    /* 6.Source Map配置 */
+
+    /* 7.实验配置 */
+    "experimentalDecorators": true, // 是否开启装饰器语法
+    "emitDecoratorMetadata": true, // 是否开启装饰器元信息
+
+    /* 8.高级配置 */
+    "skipLibCheck": true, // 是否不检查lib语法
+    "forceConsistentCasingInFileNames": true // 是否文件名大小写一致
+  }
+}
