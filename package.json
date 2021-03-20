@@ -1,7 +1,7 @@
 {
   "name": "vue3-admin-simple",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "description": "A vue3 admin template with Ant-Design-Vue",
   "author": "AodaZhang <zhangxinyu1989@foxmail.com>",
@@ -16,7 +16,7 @@
     "lint:fix": "vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit --watch",
     "commit": "git-cz",
-    "changelog": "npm --no-git-tag-version version 0.1.1 && conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "changelog": "npm --no-git-tag-version version 0.1.2 && conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "dependencies": {
     "@ant-design-vue/use": "^0.0.1-alpha.9",
