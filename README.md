@@ -2,11 +2,11 @@
 
 [![vue@next](https://img.shields.io/badge/vue%40next-3.0.0-green)](https://github.com/vuejs/vue-next)
 [![ant-design-vue](https://img.shields.io/badge/ant--design--vue-2.0.1-brightgreen)](https://github.com/vueComponent/ant-design-vue)
-[![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/AodaZhang/vue-admin-simple/blob/master/LICENSE)
+[![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/AodaZhang/vue3-admin-simple/blob/master/LICENSE)
 
 ### 简介
 
-[vue-admin-simple](https://github.com/AodaZhang/vue-admin-simple) 是一个基于 [vue3.0](https://github.com/vuejs/vue-next)，[TypeScript](https://github.com/microsoft/TypeScript) 以及 [ant-design-vue](https://github.com/vueComponent/ant-design-vue) 实现的后端管理系统，它设计思路来源于 [vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)，旨在提供一个包含后台必要功能最小集合的模板，你可以在此基础上任意扩充功能。
+[vue3-admin-simple](https://github.com/AodaZhang/vue3-admin-simple) 是一个基于 [vue3.0](https://github.com/vuejs/vue-next)，[TypeScript](https://github.com/microsoft/TypeScript) 以及 [ant-design-vue](https://github.com/vueComponent/ant-design-vue) 实现的后端管理系统，它设计思路来源于 [vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)，旨在提供一个包含后台必要功能最小集合的模板，你可以在此基础上任意扩充功能。
 
 ### 相关项目
 
