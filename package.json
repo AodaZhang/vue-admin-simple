@@ -1,7 +1,7 @@
 {
   "name": "vue-admin-simple",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "description": "A vue3 admin template with Ant-Design-Vue",
   "author": "AodaZhang <zhangxinyu1989@foxmail.com>",
