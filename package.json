@@ -7,7 +7,7 @@
   "author": "AodaZhang <zhangxinyu1989@foxmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AodaZhang/vue-admin-simple"
+    "url": "https://github.com/AodaZhang/vue3-admin-simple"
   },
   "scripts": {
     "start": "vue-cli-service serve --mode dev",
