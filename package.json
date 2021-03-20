@@ -7,14 +7,14 @@
   "author": "AodaZhang <zhangxinyu1989@foxmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://dev-cv.saicmotor.com/gitlab/OADirectToStaff/decennial-story-h5"
+    "url": "https://github.com/AodaZhang/vue-admin-simple"
   },
   "scripts": {
     "start": "vue-cli-service serve --mode dev",
     "build:uat": "vue-cli-service build --mode uat",
     "build:prod": "vue-cli-service build --mode prod",
     "lint:fix": "vue-cli-service lint --fix",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit --watch",
     "commit": "git-cz",
     "changelog": "npm --no-git-tag-version version 0.1.0 && conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
