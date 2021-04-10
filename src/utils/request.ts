@@ -1,6 +1,6 @@
 /**
- * @description axios网络请求
- * @author aodazhang 2021.03.09
+ * @description axios创建函数
+ * @author aodazhang 2021.04.09
  */
 import axios, {
   AxiosInstance,
@@ -12,7 +12,7 @@ import { message } from 'ant-design-vue'
 import storage from './storage'
 
 /** Request实例接口 */
-export interface RequestInstance extends AxiosInstance {
+export interface AxiosInstanceCustom extends AxiosInstance {
   cancel?: () => void
 }
 
@@ -50,9 +50,9 @@ function createAxiosInstance(
   enctype?: RequestEnctype,
   timeout?: number,
   useCancel?: boolean
-): RequestInstance {
+): AxiosInstanceCustom {
   // 1.axios实例
-  const axiosInstance: RequestInstance = axios.create({
+  const axiosInstance: AxiosInstanceCustom = axios.create({
     baseURL: baseURL || '',
     timeout: timeout || 10000,
     headers: {
@@ -100,10 +100,14 @@ function createAxiosInstance(
       if (useCancel === true) {
         cancelToken && cancelMap.delete(cancelToken)
       }
+      // [提示]业务状态异常
+      const { code, errMsg } = data
+      code !== 200 && message.error(errMsg || '网络错误，请稍后再试')
       return data
     },
     (error: AxiosError) => {
       const { status } = error.response
+      // [提示]网络状态异常
       message.error(responseStatusMap.get(status) || '网络错误，请稍后再试')
       return Promise.reject(error)
     }

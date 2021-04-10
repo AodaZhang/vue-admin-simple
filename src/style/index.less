@@ -1,83 +1,59 @@
 /*
  * @Description: 全局样式
- * @Author: AodaZhang 2021.01.23
+ * @Author: AodaZhang 2021.04.09
  */
-@import (once, reference) './define.less';
+@import (once, reference) './variable.less';
+@import (once) './mixin.less';
+@import (once) './antdv.less'; // ant-design-vue全量引入：引入全量样式
+@import (once) './reset.less';
+@import (once) './transition.less';
 
-
-/****************** reset ******************/
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  padding: 0;
-  margin: 0;
+a {
+  color: @--color-blue;
 }
 
-ul,
-li {
-  list-style: none;
+a.del {
+  color: @--color-red;
 }
 
-/****************** font ******************/
-h1 {
-  .fontSize(20px, @fontWeight: bold);
+.flex-center {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
-
-/****************** style ******************/
-// 进度条颜色
-#nprogress {
-  .bar {
-    background: @--color-blue  !important;
-  }
-
-  .peg {
-    .boxShadow(outside, @--color-blue);
-  }
+.flex-start {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-// 主容器高度
-#app {
-  height: 100%;
+.flex-end {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-/****************** transition ******************/
-// 1.transition切换router-view
-.router-leave-active,
-.router-enter-active {
-  .transition(opacity, 0.35s);
-  .transition(transform, 0.35s);
+.flex-between {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.router-enter-from {
-  opacity: 0;
-  transform: translateX(-30px);
+.flex-item-grow {
+  flex: 1 0 auto;
 }
 
-.router-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
+.flex-item-shrink {
+  flex: 0 1 auto;
 }
 
-// 2.transition淡入
-.fade-enter-active {
-  .transition(opacity, 0.35s);
-}
-
-.fade-enter-from {
-  opacity: 0;
-}
-
-// 3.hover背景色
-.tran-hover {
-  .transition(background-color, 0.3s);
-  .cursor(normal);
-
-  &:hover {
-    background-color: @--color-gray;
-  }
+.font-nowrap {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
 }

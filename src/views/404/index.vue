@@ -1,5 +1,5 @@
 <template>
-  <div class="not-found">
+  <div class="flex-center">
     <a-result status="404" title="404" :sub-title="langRef['404.subTitle']">
       <template #extra>
         <a-button type="primary" @click="onClickHome">
@@ -16,6 +16,8 @@ import { useRouter } from 'vue-router'
 import useLocale from '@/hooks/useLocale'
 
 export default defineComponent({
+  name: '404',
+
   setup() {
     const router = useRouter()
     const { langRef } = useLocale()
@@ -26,13 +28,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="less">
-@import '~@/style/define.less';
-
-.not-found {
-  .center(flex);
-  width: 100%;
-  height: 100%;
-}
-</style>

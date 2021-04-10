@@ -1,13 +1,12 @@
 /**
  * @description 面包屑
- * @author zhangxinyu 2021.03.17
+ * @author aodazhang 2021.04.10
  */
 import { defineComponent, ref, watchEffect } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { Breadcrumb } from 'ant-design-vue'
 import { Route } from 'ant-design-vue/lib/breadcrumb/Breadcrumb'
 import useLocale from '@/hooks/useLocale'
-import './style.less'
 
 export default defineComponent({
   name: 'Breadcrumb',
@@ -17,12 +16,12 @@ export default defineComponent({
     const { langRef } = useLocale()
     const routesRef = ref<Route[]>([])
 
-    // 监听当前路由匹配层级信息
+    // 监听当前url匹配的路由层级信息，动态生成面包屑数组
     watchEffect(() => {
       const lang = langRef.value
       const routes: Route[] = []
       route.matched.forEach(({ path, meta }) => {
-        const { title } = meta as Meta
+        const { title } = meta as RouteMeta
         if (!title) {
           return
         }
@@ -49,10 +48,10 @@ export default defineComponent({
         )
       }
       return (
-        <div class="breadcrumb">
+        <section style="padding:12px 24px 16px; background-color:#fff;">
           <Breadcrumb routes={routes} v-slots={{ itemRender: slot }} />
-          {title && <h1>{title}</h1>}
-        </div>
+          {title && <h1 style="margin-top:5px;">{title}</h1>}
+        </section>
       )
     }
   }

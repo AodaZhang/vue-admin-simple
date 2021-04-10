@@ -1,6 +1,6 @@
 /**
  * @description 路由实例
- * @author aodazhang 2021.03.09
+ * @author aodazhang 2021.04.09
  */
 import {
   createRouter,
@@ -14,7 +14,7 @@ import { initRoutes, asyncRoutes } from './routes'
 const initRouter = (): Router =>
   createRouter({
     routes: initRoutes,
-    // history路由创建可改为createWebHashHistory
+    // hash路由创建可改为createWebHashHistory
     history: createWebHistory(process.env.VUE_APP_BASE_URL_ROUTER),
     // vue3.x中x、y变更为left、top
     scrollBehavior(_to, _from, savedPosition) {
@@ -25,21 +25,23 @@ const initRouter = (): Router =>
 // 2.根据用户权限过滤动态路由
 const filterAsyncRoutes = (
   routes: RouteRecordRaw[],
-  roles: string[]
+  role: string
 ): RouteRecordRaw[] => {
   // 其他角色根据路由meta过滤
   const addRoutes: RouteRecordRaw[] = []
   routes.forEach(route => {
     const routeTmp = { ...route }
     let hasPermission = true
-    if (routeTmp.meta && Array.isArray(routeTmp.meta.roles)) {
-      hasPermission = roles.some(role =>
-        (routeTmp.meta.roles as string[]).includes(role)
-      )
+    if (
+      routeTmp.meta &&
+      Array.isArray(routeTmp.meta.roles) &&
+      routeTmp.meta.roles.length
+    ) {
+      hasPermission = (routeTmp.meta.roles as string[]).includes(role)
     }
     if (hasPermission) {
       if (routeTmp.children) {
-        routeTmp.children = filterAsyncRoutes(routeTmp.children, roles)
+        routeTmp.children = filterAsyncRoutes(routeTmp.children, role)
       }
       addRoutes.push(routeTmp)
     }
@@ -52,16 +54,16 @@ const router = initRouter()
 
 /**
  * 根据用户权限生成动态路由
- * @param roles 用户权限
+ * @param role 用户权限
  * @returns 动态添加路由
  */
-export function generateRoutes(roles: string[]): RouteRecordRaw[] {
-  if (roles.includes('admin')) {
+export function generateRoutes(role: string): RouteRecordRaw[] {
+  if (role === 'admin') {
     // 管理员：返回全部页面
     return asyncRoutes
   } else {
     // 其他角色：返回权限对应页面
-    return filterAsyncRoutes(asyncRoutes, Array.isArray(roles) ? roles : [])
+    return filterAsyncRoutes(asyncRoutes, typeof role === 'string' ? role : '')
   }
 }
 

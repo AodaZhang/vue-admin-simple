@@ -1,0 +1,91 @@
+/*
+ * @Description: 重置
+ * @Author: AodaZhang 2021.04.09
+ */
+@charset "utf-8";
+
+html,
+body {
+  // 设置css字体抗锯齿
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // 禁止移动端浏览器旋转屏幕时改变字体大小
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  // 解决移动端触摸元素出现半透明灰色遮罩
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  // 解决苹果设备滚动不流畅
+  -webkit-overflow-scrolling: touch;
+  // 解决新版chorme默认行为报错问题：触摸事件都不会产生默认行为，但是touch事件照样触发
+  touch-action: none;
+  height: 100%;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  line-height: normal;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+#nprogress {
+  .bar {
+    background: @--color-blue  !important;
+  }
+
+  .peg {
+    box-shadow: 0 5px 10px 1px @--color-blue;
+  }
+}
+
+#app {
+  height: 100%;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+}

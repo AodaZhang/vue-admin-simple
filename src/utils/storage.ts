@@ -1,6 +1,6 @@
 /**
- * @description web存储
- * @author aodazhang 2021.03.09
+ * @description web存储函数
+ * @author aodazhang 2021.04.10
  */
 
 /** web存储类型 */
@@ -77,7 +77,7 @@ function removeItem(key: string, type?: StorageType): boolean {
 }
 
 /**
- * 4.删storage所有key
+ * 删storage所有key
  * @param ignoreKeys 忽略移除的存储key
  * @param type web存储类型
  * @returns 执行结果

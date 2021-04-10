@@ -1,12 +1,10 @@
 /**
  * @description 网站Logo
- * @author zhangxinyu 2021.03.17
+ * @author aodazhang 2021.04.10
  */
-import { Image } from 'ant-design-vue'
 import { defineComponent, PropType, Transition } from 'vue'
 import { RouterLink } from 'vue-router'
 import logo from '@/assets/image/logo.png'
-import './style.less'
 
 export default defineComponent({
   name: 'Logo',
@@ -23,10 +21,17 @@ export default defineComponent({
       const { collapsed } = props
       return (
         <RouterLink to="/">
-          <div class="logo">
-            <Image src={logo} preview={false} placeholder />
+          <div class="flex-center" style="height:64px;">
+            <img style="width:24px; height:24px;" src={logo} />
             <Transition name="fade">
-              {!collapsed && <p class="logo__title">Vue Admin</p>}
+              {!collapsed && (
+                <h1
+                  class="font-nowrap"
+                  style="margin-left:8px; font-size:22px; color:#fff;"
+                >
+                  Vue3 Admin
+                </h1>
+              )}
             </Transition>
           </div>
         </RouterLink>

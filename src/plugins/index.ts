@@ -1,5 +1,5 @@
 /**
- * @description plugins入口ts
+ * @description plugins入口
  * @author aodazhang 2021.03.09
  */
 import { App } from 'vue'

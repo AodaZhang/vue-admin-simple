@@ -32,7 +32,7 @@
     >
       {{ langRef['login.button'] }}
     </a-button>
-    <a-form-item style="color: #fff; text-align: center">
+    <a-form-item style="text-align: center">
       {{ langRef['login.tip'] }}
     </a-form-item>
   </a-form>
@@ -46,7 +46,7 @@ import { useForm } from '@ant-design-vue/use'
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 import useLocale from '@/hooks/useLocale'
 
-interface StateRef {
+interface State {
   isLoading: boolean
   username: string
   password: string
@@ -61,32 +61,32 @@ export default defineComponent({
     const router = useRouter()
     const store = useStore<Vuex.RootState>()
     const { langRef } = useLocale()
-    const stateRef = reactive<StateRef>({
+    const state = reactive<State>({
       isLoading: false,
-      username: '',
-      password: ''
+      username: null,
+      password: null
     })
     const rulesRef = reactive({
-      username: [{ required: true, message: '请输入账号' }],
-      password: [{ required: true, message: '请输入密码' }]
+      username: [{ required: true, message: '请输入账号', type: 'string' }],
+      password: [{ required: true, message: '请输入密码', type: 'string' }]
     })
 
-    const { validateInfos, validate } = useForm(stateRef, rulesRef)
+    const { validateInfos, validate } = useForm(state, rulesRef)
 
     const onClickLogin = async () => {
       try {
-        const payload = await validate<StateRef>()
-        stateRef.isLoading = true
+        const payload = await validate<State>()
+        state.isLoading = true
         await store.dispatch('user/login', payload)
-        stateRef.isLoading = false
+        state.isLoading = false
         router.push('/')
       } catch (error) {
-        stateRef.isLoading = false
+        state.isLoading = false
       }
     }
 
     return {
-      ...toRefs(stateRef),
+      ...toRefs(state),
       langRef,
       validateInfos,
       onClickLogin

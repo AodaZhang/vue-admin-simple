@@ -7,7 +7,7 @@
     :wrapper-col="{ span: 10 }"
   >
     <a-form-item label="活动名称" name="name">
-      <a-input v-model:value="name" />
+      <a-input v-model:value="name" placeholder="请输入活动名称" />
     </a-form-item>
     <a-form-item label="活动地点" name="region">
       <a-select v-model:value="region" placeholder="请选择活动地点">
@@ -17,11 +17,10 @@
     </a-form-item>
     <a-form-item label="活动时间" name="date">
       <a-date-picker
-        style="min-width: 100%; width: 100%"
         v-model:value="date"
         show-time
         type="date"
-        placeholder="请选择日期"
+        placeholder="请选择活动时间"
       />
     </a-form-item>
     <a-form-item label="活动状态" name="delivery">
@@ -43,13 +42,9 @@
       </a-radio-group>
     </a-form-item>
     <a-form-item label="活动描述" name="desc">
-      <a-textarea
-        style="min-height: 100px"
-        v-model:value="desc"
-        placeholder="请输入活动描述"
-      />
+      <a-textarea v-model:value="desc" placeholder="请输入活动描述" />
     </a-form-item>
-    <a-row type="flex" justify="center" align="top">
+    <a-row type="flex" justify="center">
       <a-button type="primary" @click="onSubmit">提交</a-button>
       <a-button style="margin-left: 10px" @click="onReset">重置</a-button>
     </a-row>
@@ -58,10 +53,10 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, toRaw, toRefs } from 'vue'
-import { Dayjs } from 'dayjs'
 import { ValidateErrorEntity } from 'ant-design-vue/lib/form/interface'
+import { Dayjs } from 'dayjs'
 
-interface FormState {
+interface State {
   name: string
   region: string
   date?: Dayjs
@@ -77,30 +72,38 @@ export default defineComponent({
 
   setup() {
     const formRef = ref()
-    const state = reactive<FormState>({
-      name: '',
-      region: '',
+    const state = reactive<State>({
+      name: null,
+      region: null,
       date: null,
       delivery: false,
       rate: 0,
       type: [],
-      resource: '',
-      desc: ''
+      resource: null,
+      desc: null
     })
     const rules = reactive({
       name: [
         {
           required: true,
           message: '请输入活动名称',
-          trigger: 'blur'
+          trigger: 'blur',
+          type: 'string'
         },
-        { message: '长度为3-5个字符', trigger: 'blur', min: 3, max: 5 }
+        {
+          message: '长度为3-5个字符',
+          trigger: 'blur',
+          type: 'string',
+          min: 3,
+          max: 5
+        }
       ],
       region: [
         {
           required: true,
           message: '请选择活动地点',
-          trigger: 'change'
+          trigger: 'change',
+          type: 'string'
         }
       ],
       date: [
@@ -123,14 +126,16 @@ export default defineComponent({
         {
           required: true,
           message: '请选择活动资源',
-          trigger: 'change'
+          trigger: 'change',
+          type: 'string'
         }
       ],
       desc: [
         {
           required: true,
           message: '请输入活动描述',
-          trigger: 'blur'
+          trigger: 'blur',
+          type: 'string'
         }
       ]
     })
@@ -141,19 +146,17 @@ export default defineComponent({
         .then(() => {
           console.log('values', toRaw(state))
         })
-        .catch((error: ValidateErrorEntity<FormState>) => {
+        .catch((error: ValidateErrorEntity<State>) => {
           console.log('error', error.values)
         })
     }
 
-    const onReset = () => {
-      formRef.value.resetFields()
-    }
+    const onReset = () => formRef.value.resetFields()
 
     return {
+      ...toRefs(state),
       formRef,
       state,
-      ...toRefs(state),
       rules,
       onSubmit,
       onReset

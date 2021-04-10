@@ -1,5 +1,5 @@
 /**
- * @description vuex全局定义
+ * @description vuex定义
  * @author aodazhang 2021.03.09
  */
 import { RouteRecordRaw } from 'vue-router'
@@ -13,31 +13,13 @@ declare namespace _Vuex {
     /** 用户token */
     token: string
     /** 用户信息 */
-    info: Info
+    info: UserInfo
     /** 用户权限 */
-    permission: Permission
+    permission: UserPermission
     /** 动态路由 */
     addRoutes: RouteRecordRaw[]
     /** 基础路由 */
     routes: RouteRecordRaw[]
-  }
-
-  /** 用户信息 */
-  interface Info {
-    /** 用户名 */
-    name: string
-    /** 用户头像 */
-    avatar: string
-  }
-
-  /** 用户权限 */
-  interface Permission {
-    /** 用户角色：页面级权限 */
-    roles: string[]
-    /** 用户操作：dom级权限 */
-    actionMap: {
-      [key: string]: string[]
-    }
   }
 }
 

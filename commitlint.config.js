@@ -1,6 +1,6 @@
 /**
  * @description @commitlint/cli配置文件
- * @author aodazhang 2020.03.08
+ * @author aodazhang 2021.04.09
  */
 
 module.exports = {

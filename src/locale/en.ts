@@ -4,10 +4,10 @@
  */
 
 export default {
-  'login.username': 'please input username',
+  'login.username': 'account：admin',
   'login.password': 'password：12345',
   'login.button': 'Login',
-  'login.tip': 'username：admin、editor、viewer',
+  'login.tip': 'account：admin、editor、viewer',
   'selectUser.user': 'info',
   'selectUser.logout': 'logout',
   'selectUser.model.title': 'Tips',

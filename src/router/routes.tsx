@@ -1,10 +1,9 @@
 /**
  * @description 路由配置
- * @author aodazhang 2021.03.09
+ * @author aodazhang 2021.04.09
  */
 import { RouteRecordRaw } from 'vue-router'
 import {
-  DashboardOutlined,
   DesktopOutlined,
   FormOutlined,
   HomeOutlined,
@@ -44,8 +43,9 @@ export const asyncRoutes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    redirect: '/schedule',
+    redirect: '/info',
     meta: {
+      roles: [],
       menu: true,
       keepAlive: true,
       title: 'menu.index',
@@ -54,24 +54,10 @@ export const asyncRoutes: RouteRecordRaw[] = [
     component: BaseLayout,
     children: [
       {
-        path: 'schedule',
-        name: 'Schedule',
-        meta: {
-          menu: true,
-          keepAlive: true,
-          title: 'menu.index.schedule',
-          icon: <DashboardOutlined />
-        },
-        component: () =>
-          import(
-            /* webpackChunkName: "schedule" */ '@/views/schedule/index.vue'
-          )
-      },
-      {
         path: 'info',
         name: 'Info',
         meta: {
-          menu: true,
+          roles: [],
           keepAlive: true,
           title: 'menu.index.info',
           icon: <UserOutlined />
@@ -86,7 +72,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
     name: 'Data',
     redirect: '/data/table',
     meta: {
-      menu: true,
+      roles: [],
       keepAlive: true,
       title: 'menu.data',
       icon: <DesktopOutlined />
@@ -97,7 +83,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
         path: 'table',
         name: 'Table',
         meta: {
-          menu: true,
+          roles: [],
           keepAlive: true,
           title: 'menu.data.table',
           icon: <TableOutlined />
@@ -110,11 +96,10 @@ export const asyncRoutes: RouteRecordRaw[] = [
         name: 'Form',
         redirect: '/data/form/form1',
         meta: {
-          menu: true,
+          roles: ['editor', 'viewer'],
           keepAlive: true,
           title: 'menu.data.form',
-          icon: <FormOutlined />,
-          roles: ['editor', 'viewer']
+          icon: <FormOutlined />
         },
         component: () =>
           import(/* webpackChunkName: "form" */ '@/views/form/index.vue'),
@@ -123,10 +108,9 @@ export const asyncRoutes: RouteRecordRaw[] = [
             path: 'form1',
             name: 'Form1',
             meta: {
-              menu: true,
+              roles: ['editor'],
               keepAlive: true,
-              title: 'menu.data.form.form1',
-              roles: ['editor']
+              title: 'menu.data.form.form1'
             },
             component: () =>
               import(
@@ -137,7 +121,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
             path: 'form2',
             name: 'Form2',
             meta: {
-              menu: true,
+              roles: [],
               keepAlive: true,
               title: 'menu.data.form.form2'
             },

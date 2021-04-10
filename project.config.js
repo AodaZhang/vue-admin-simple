@@ -1,11 +1,11 @@
 /**
  * @description 项目配置文件
- * @author aodazhang 2021.03.09
+ * @author aodazhang 2021.04.09
  */
 
 module.exports = {
   // 1.项目名
-  title: 'Vue Admin Simple',
+  title: 'Vue3 Admin Simple',
 
   // 2.devServer
   port: 3000, // 端口号
@@ -19,7 +19,8 @@ module.exports = {
   // 4.生产环境是否开启analyzer
   isAnalyzer: true,
 
-  // 5.覆盖antdv样式定义：https://github.com/vueComponent/ant-design-vue/blob/master/components/style/themes/default.less
+  // 5.ant-design-vue按需引入：覆盖antdv样式定义请解除下面注释
+  // https://github.com/vueComponent/ant-design-vue/blob/master/components/style/themes/default.less
   modifyVars: {
     // 'primary-color': '#1890ff' // 主色
   }

@@ -1,4 +1,4 @@
-const getUrl = url => `${process.env.VUE_APP_BASE_URL_USER}${url}`
+const getUrl = url => `${process.env.VUE_APP_BASE_URL_API}/user${url}`
 
 module.exports = app => {
   // 1.用户登陆
@@ -13,14 +13,22 @@ module.exports = app => {
       token = 'viewerToken'
     }
     setTimeout(() => {
-      res.json({ token })
+      res.json({
+        code: token ? 200 : 0,
+        errMsg: token ? '' : '账户或密码错误，请重新输入',
+        data: token
+      })
     }, 1000)
   })
 
   // 2.用户登出
   app.post(getUrl('/logout'), ({ query, body }, res) => {
     setTimeout(() => {
-      res.json({})
+      res.json({
+        code: 200,
+        errMsg: '',
+        data: null
+      })
     }, 1000)
   })
 
@@ -33,7 +41,9 @@ module.exports = app => {
       viewerToken: 'viewer'
     }
     res.json({
-      info: {
+      code: 200,
+      errMsg: '',
+      data: {
         name: nameMap[token],
         avatar:
           'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png'
@@ -46,24 +56,26 @@ module.exports = app => {
     const token = req.get('token')
     const permissionMap = {
       adminToken: {
-        roles: ['admin'],
+        role: 'admin',
         actionMap: {
           table: ['add', 'del']
         }
       },
       editorToken: {
-        roles: ['editor'],
+        role: 'editor',
         actionMap: {
           table: ['add', 'del']
         }
       },
       viewerToken: {
-        roles: ['viewer'],
+        role: 'viewer',
         actionMap: {}
       }
     }
     res.json({
-      permission: permissionMap[token]
+      code: 200,
+      errMsg: '',
+      data: permissionMap[token]
     })
   })
 }

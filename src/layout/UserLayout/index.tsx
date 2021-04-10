@@ -1,36 +1,38 @@
 /**
- * @description 用户类视图layout
- * @author zhangxinyu 2021.03.11
+ * @description 用户页面Layout
+ * @author aodazhang 2021.04.10
  */
 import { defineComponent } from 'vue'
-import { useStore } from 'vuex'
 import { ConfigProvider } from 'ant-design-vue'
-import AnimateBackground from '@/components/AnimateBackground'
+import useLocale from '@/hooks/useLocale'
+import { createRouterView } from '@/utils/view'
 import SelectLang from '@/components/SelectLang'
-import { createRouterView } from '../view'
-import './style.less'
 
 export default defineComponent({
   name: 'UserLayout',
 
   setup() {
-    const store = useStore()
-    return () => (
-      <ConfigProvider locale={store.getters.localeAntdv}>
-        <div id="userLayout" class="user-layout">
-          <AnimateBackground />
-          <SelectLang class="user-layout__lang" color="#fff" />
-          <div class="user-layout__main">
-            <h1 class="user-layout__main__header">Vue Admin Simple</h1>
-            <section class="user-layout__main__container">
-              {createRouterView(false)}
-            </section>
-            <p class="user-layout__main__footer">
-              Copyright &copy; 2021 AodaZhang
-            </p>
-          </div>
-        </div>
-      </ConfigProvider>
-    )
+    const { langAntdRef } = useLocale()
+
+    return () => {
+      const langAntdv = langAntdRef.value
+      return (
+        <ConfigProvider locale={langAntdv}>
+          <section class="flex-center" style="height:100%">
+            <SelectLang
+              class="hover"
+              style="position:absolute;top:20px;right:0;"
+            />
+            <div class="flex-item-shrink" style="width:300px;">
+              <h1 style="text-align:center;">Vue3 Admin Simple</h1>
+              <main style="margin-top:40px;">{createRouterView(false)}</main>
+              <footer style="margin-top:40px;text-align:center;">
+                Copyright &copy; 2021 AodaZhang
+              </footer>
+            </div>
+          </section>
+        </ConfigProvider>
+      )
+    }
   }
 })

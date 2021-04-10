@@ -1,10 +1,10 @@
 /**
- * @description 数据模型类
- * @author aodazhang 2021.03.09
+ * @description 基类
+ * @author aodazhang 2021.04.09
  */
 
 /** 基类 */
-export class BaseModel {
+export default class BaseModel {
   /**
    * 1.更新数据
    * @param data 数据源
@@ -15,10 +15,10 @@ export class BaseModel {
       return
     }
     for (const [key, value] of Object.entries(data)) {
-      if (!Reflect.hasOwnProperty.call(this, key) || value == null) {
+      if (!Reflect.ownKeys(this).includes(key) || value == null) {
         continue
       }
-      ;(this as any)[key] = value
+      Reflect.set(this, key, value)
     }
   }
 }

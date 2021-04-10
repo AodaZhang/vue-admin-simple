@@ -1,6 +1,6 @@
 /**
- * @description 国际化语言选择
- * @author zhangxinyu 2021.03.11
+ * @description 用户菜单
+ * @author aodazhang 2021.04.09
  */
 import { computed, createVNode, defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
@@ -12,7 +12,6 @@ import {
   UserOutlined
 } from '@ant-design/icons-vue'
 import useLocale from '@/hooks/useLocale'
-import './style.less'
 
 export default defineComponent({
   name: 'SelectUser',
@@ -53,26 +52,22 @@ export default defineComponent({
       const lang = langRef.value
       const { avatar, name } = info.value
       const userMenu = (
-        <Menu style={{ minWidth: '120px' }}>
+        <Menu style="min-width:120px;">
           <Menu.Item onClick={userInfo}>
-            <UserOutlined />
+            <UserOutlined style="color:#1890ff;" />
             {lang['selectUser.user']}
           </Menu.Item>
           <Menu.Item onClick={logout}>
-            <LogoutOutlined />
+            <LogoutOutlined style="color:#f5222d;" />
             {lang['selectUser.logout']}
           </Menu.Item>
         </Menu>
       )
       return (
-        <Dropdown
-          class="select-user"
-          trigger={['click', 'hover']}
-          overlay={userMenu}
-        >
-          <div>
+        <Dropdown trigger={['click', 'hover']} overlay={userMenu}>
+          <div style="padding:0 10px;">
             <Avatar size="small" src={avatar} />
-            <span class="select-user__name">{name}</span>
+            <span style="min-width:20px;margin-left:8px;">{name}</span>
           </div>
         </Dropdown>
       )

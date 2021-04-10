@@ -4,7 +4,7 @@
  */
 
 export default {
-  'login.username': '请输入账号',
+  'login.username': '测试账号：admin',
   'login.password': '测试密码：12345',
   'login.button': '登录',
   'login.tip': '账号：admin-管理、editor-编辑、viewer-查看',

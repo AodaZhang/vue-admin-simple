@@ -1,6 +1,6 @@
 /**
- * @description tsx view创建
- * @author zhangxinyu 2021.03.10
+ * @description view创建函数
+ * @author aodazhang 2021.04.09
  */
 import {
   KeepAlive,

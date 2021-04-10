@@ -1,0 +1,48 @@
+/*
+ * @Description: 过渡
+ * @Author: AodaZhang 2021.04.09
+ */
+
+/********************transition组件********************/
+
+// 1.router-view切换
+.router-leave-active,
+.router-enter-active {
+  .transition(opacity, 0.35s);
+  .transition(transform, 0.35s);
+}
+
+.router-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.router-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+// 2.淡入淡出
+.fade-enter-active {
+  .transition(opacity, 0.35s);
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+/********************hover效果********************/
+
+// 1.背景色（灰）
+.hover {
+  cursor: pointer;
+}
+
+.hover-bg-gray {
+  .transition(background-color, 0.3s);
+  cursor: pointer;
+
+  &:hover {
+    background-color: @--color-gray;
+  }
+}

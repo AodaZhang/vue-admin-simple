@@ -1,14 +1,15 @@
 /**
  * @description @babel/core配置文件
- * @author aodazhang 2021.01.25
+ * @author aodazhang 2021.04.09
+ * @extends https://www.babeljs.cn/docs/presets
  */
 
 module.exports = {
   presets: ['@vue/cli-plugin-babel/preset'],
   plugins: [
-    // vue-jsx@next：https://github.com/vuejs/jsx-next
+    // 1.vue-jsx@next：https://github.com/vuejs/jsx-next
     '@vue/babel-plugin-jsx'
-    // ant-design-vue按需引入：使用babel-plugin-import请解除下面注释
+    // 2.ant-design-vue按需引入：使用babel-plugin-import请解除下面注释
     // [
     //   'import',
     //   {

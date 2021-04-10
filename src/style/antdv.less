@@ -1,17 +1,17 @@
 /*
  * @Description: 覆盖antdv样式定义
- * @Author: AodaZhang 2021.03.13
+ * @Author: AodaZhang 2021.04.09
  * @Reference: https://github.com/vueComponent/ant-design-vue/blob/master/components/style/themes/default.less
  */
 @import '~ant-design-vue/dist/antd.less';
-@import (once, reference) './define.less';
 
-// 1.色彩
+/********************色彩********************/
+
 @primary-color: @--color-blue; // 全局主色
 @link-color: @--color-blue; // 链接色
 @success-color: #52c41a; // 成功色
 @warning-color: #faad14; // 警告色
-@error-color: #f5222d; // 错误色
+@error-color: @--color-red; // 错误色
 @heading-color: rgba(0, 0, 0, 0.85); // 标题色
 @text-color: rgba(0, 0, 0, 0.65); // 主文本色
 @text-color-secondary: rgba(0, 0, 0, 0.45); // 次文本色
@@ -19,6 +19,50 @@
 @border-color-base: #d9d9d9; // 边框色
 @box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // 浮层阴影
 
-// 2.尺寸
+/********************尺寸********************/
+
 @font-size-base: 14px; // 主字号
 @border-radius-base: 4px; // 组件/浮层圆角
+
+/********************样式********************/
+
+.ant-layout-sider {
+  overflow: auto;
+  height: 100%;
+}
+
+.ant-layout-header {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  background-color: @--color-white;
+  box-shadow: 0 1px 4px 1px rgba(0, 21, 41, 0.08);
+}
+
+.ant-layout-content {
+  position: relative;
+  z-index: 0;
+  min-height: auto;
+}
+
+.ant-layout-footer {
+  padding: 15px 30px;
+  text-align: center;
+}
+
+.ant-calendar-picker {
+  width: 100%;
+  min-width: 100% !important;
+}
+
+.ant-select {
+  width: 100%;
+}
+
+textarea.ant-input {
+  min-height: 100px;
+}
+
+.ant-table-wrapper {
+  width: 100%;
+}

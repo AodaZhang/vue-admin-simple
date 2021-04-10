@@ -1,0 +1,32 @@
+/*
+ * @Description: mixin
+ * @Author: AodaZhang 2021.04.09
+ */
+
+// 1.背景图片
+.backgroundImage(@imageName: '', @backgroundSize: cover, @imageExtension: 'png') {
+  background-image: url('../assets/image/@{imageName}.@{imageExtension}');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: @backgroundSize; // cover 保持图片比例铺满容器 | contain 保持图片比例在容器完整显示图片
+}
+
+// 2.transition动画
+.transition(@property: all, @duration: 0.35s, @timingFunction: ease-in-out, @delay: 0s) when (iskeyword(@property)) {
+  -webkit-transition+: @property @duration @timingFunction @delay; // Chrome、Safari
+  transition+: @property @duration @timingFunction @delay;
+}
+
+// 3.keyframes动画
+.animation(@animationId, @duration: 0.5s, @timingFunction: ease-in-out, @delay: 0s, @iterationCount: 1, @direction: normal, @fillMode: forwards, @playState: running) {
+  -webkit-animation+: @animationId @duration @timingFunction @delay;
+  -webkit-animation-iteration-count+: @iterationCount;
+  -webkit-animation-direction+: @direction;
+  -webkit-animation-fill-mode+: @fillMode;
+  -webkit-animation-play-state+: @playState;
+  animation+: @animationId @duration @timingFunction @delay; // 动画执行曲线(ease 线性 | step(1) 非线性)
+  animation-iteration-count+: @iterationCount; // 动画执行次数(number 次数 | infinite 无限次)
+  animation-direction+: @direction; // 动画执行顺序(normal 正向 | reverse 反向 | alternate 先正向后反向 | alternate-reverse 先反向后正向)
+  animation-fill-mode+: @fillMode; // 动画执行结束样式(none 无 | backwards 动画起始帧样式 | forwards 动画结束帧样式)
+  animation-play-state+: @playState; // 动画执行状态(running 运行 | paused 暂停)
+}

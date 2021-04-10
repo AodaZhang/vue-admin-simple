@@ -1,6 +1,6 @@
 /**
- * @description vue-router入口ts
- * @author aodazhang 2021.03.09
+ * @description vue-router入口
+ * @author aodazhang 2021.04.09
  */
 import { App } from 'vue'
 import { RouteRecordName, RouteRecordRaw } from 'vue-router'
@@ -26,8 +26,8 @@ router.beforeEach(async (to, from, next) => {
   const token = storage.getItem('token')
   if (token) {
     // 1.登陆态
-    const permission: Vuex.Permission = store.getters.permission
-    if (permission.roles.length) {
+    const permission: UserPermission = store.getters.permission
+    if (permission.role) {
       // 1-1.有权限
       if (whitePageList.includes(name)) {
         // 白名单页：重定向到默认页
